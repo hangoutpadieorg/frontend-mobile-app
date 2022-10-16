@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:padie_mobile/common/widgets/custom_tab_bar.dart';
-
 import '../constants/colors.dart';
 
 

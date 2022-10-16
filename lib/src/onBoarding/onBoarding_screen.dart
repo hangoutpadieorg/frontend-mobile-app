@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'components/onBoarding_view.dart';
 
 class OnBoarding extends StatefulWidget {

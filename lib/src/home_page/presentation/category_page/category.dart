@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/side_scroll_lists.dart';
-import '../event_page/components/presentation/artGallery_list_page.dart';
-import '../event_page/components/presentation/bar_list_page.dart';
-import '../event_page/components/presentation/beach_list_page.dart';
-import '../event_page/components/presentation/cafe_list_page.dart';
-import '../event_page/components/presentation/lounge_list_page.dart';
-import '../event_page/components/presentation/restaurant_list_page.dart';
+import 'presentation/artGallery_list_page.dart';
+import 'presentation/bar_list_page.dart';
+import 'presentation/beach_list_page.dart';
+import 'presentation/cafe_list_page.dart';
+import 'presentation/lounge_list_page.dart';
+import 'presentation/restaurant_list_page.dart';
+
 
 // class Categories extends StatefulWidget {
 //   const Categories({Key? key}) : super(key: key);

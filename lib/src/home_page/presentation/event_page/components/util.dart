@@ -4,13 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../../common/constants/colors.dart';
 
 class ScaffoldK extends StatelessWidget {
-  const ScaffoldK({Key? key, required this.lists, required this.title}) : super(key: key);
+  const ScaffoldK({Key? key, required this.lists, required this.title,  this.location}) : super(key: key);
   final Widget lists;
   final String title;
+  final String? location;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: listPagesAppBar(context, title),
+      appBar: listPagesAppBar(context, title, location!),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -27,7 +28,7 @@ class ScaffoldK extends StatelessWidget {
 
 
 
-PreferredSizeWidget listPagesAppBar(BuildContext context,String title) {
+PreferredSizeWidget listPagesAppBar(BuildContext context,String title, String location) {
   return AppBar(
     automaticallyImplyLeading: false,
     toolbarHeight: 80,
@@ -52,12 +53,12 @@ PreferredSizeWidget listPagesAppBar(BuildContext context,String title) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: SizedBox(
                 child: Text(
-                  'Location',
-                  style: TextStyle(
+                  location,
+                  style: const TextStyle(
                       fontSize: 16,
                       // fontFamily: "MISTRAL",
                       // fontWeight: FontWeight.w500,

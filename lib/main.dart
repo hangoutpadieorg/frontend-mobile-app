@@ -2,9 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:padie_mobile/common/constants/size_config.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:padie_mobile/src/onBoarding/onBoarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'splash_screen/splash_screen.dart';
 import 'src/nav_bar.dart';
@@ -27,6 +25,8 @@ void main() async{
 //   throw UnimplementedError();
 // });
 
+
+GlobalKey<NavigatorState> _mainNavigatorKey = GlobalKey<NavigatorState>();
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -37,13 +37,14 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         designSize: const Size(428, 926),
         builder: (context, child)=>MaterialApp(
+          navigatorKey: _mainNavigatorKey,
           scrollBehavior: const MaterialScrollBehavior(),
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: isViewed != 0 ? const SplashScreen() : const Navigation(),
+          home: isViewed != 0 ? const SplashScreen() :  Nav(),
         )
     );
   }

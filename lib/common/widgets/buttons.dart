@@ -34,7 +34,7 @@ class MyButton extends StatelessWidget {
                 label,
                 maxLines: 1,
                 style: TextStyle(
-                  fontSize: getFontSize(20),
+                  fontSize: getFontSize(17.5),
                   color: isOrange ? Colors.white : Colors.black,
                 ),
               ),
@@ -44,7 +44,7 @@ class MyButton extends StatelessWidget {
           ) : Text(
             label,
             style: TextStyle(
-              fontSize: getFontSize(20),
+              fontSize: getFontSize(17.5),
               color: isOrange ? Colors.white : Colors.black,
             ),
           ),
@@ -56,10 +56,11 @@ class MyButton extends StatelessWidget {
 
 
 class BlackButton extends StatelessWidget {
-  const BlackButton({Key? key, required this.label, required this.onTap, required this.isSmall, }) : super(key: key);
+  const BlackButton({Key? key, required this.label, required this.onTap, required this.isSmall, this.withLogo, }) : super(key: key);
   final String label;
   final VoidCallback onTap;
   final bool isSmall;
+  final Widget? withLogo;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -74,10 +75,10 @@ class BlackButton extends StatelessWidget {
         height: getProportionateScreenHeight(65),
         child: Align(
           alignment: Alignment.center,
-          child: Text(
+          child: withLogo ?? Text(
             label,
             style: TextStyle(
-              fontSize: getFontSize(20),
+              fontSize: getFontSize(18.5),
               color: Colors.white,
             ),
           ),

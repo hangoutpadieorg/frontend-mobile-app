@@ -28,7 +28,7 @@ class DrawerK extends StatelessWidget {
               leading: const Icon(Icons.location_on_outlined,color: Colors.black, size: 22,),
               title: const Text('Edit Profile'),
               onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const EditProfile()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>  EditProfile()));
               },
             ),
 

@@ -38,10 +38,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_riverpod:
   flutter_screenutil: #^5.0.0+2
-  carousel_slider: ^4.1.1
+  intl:
+  image_picker:
   shared_preferences: 
   font_awesome_flutter:
   smooth_page_indicator:
+  dropdown_button2:
+#  carousel_slider: ^4.1.1
+#  file_picker: ^5.2.1
 
 dev_dependencies:
   flutter_test:

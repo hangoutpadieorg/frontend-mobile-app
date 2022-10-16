@@ -1,10 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:padie_mobile/common/widgets/custom_tab_bar.dart';
 import '../../../../common/constants/size_config.dart';
 import '../../../../common/widgets/appbar.dart';
-import '../../../../common/widgets/side_scroll_lists.dart';
 import '../category_page/category.dart';
 import '../event_page/event.dart';
 import '../location_page/location.dart';

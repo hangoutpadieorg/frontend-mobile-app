@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'components/contact_view.dart';
+import 'components/presentation/contact_view.dart';
 
 class ContactPage extends StatelessWidget {
   const ContactPage({Key? key}) : super(key: key);

@@ -1,19 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:padie_mobile/common/constants/colors.dart';
-
 import '../../../../common/constants/size_config.dart';
 
-class Locations extends StatefulWidget {
+
+
+
+///// Class to change the location String
+class LocationString extends StateNotifier<String>{
+  LocationString() : super('Abuja');
+
+  void change(String text) =>
+      state = text;
+}
+// void selected() =>
+/////// Location String provider
+final locationProvider = StateNotifierProvider<LocationString, String>((ref) => LocationString());
+
+
+class Locations extends ConsumerStatefulWidget {
   const Locations({Key? key}) : super(key: key);
 
   @override
-  State<Locations> createState() => _LocationsState();
+  ConsumerState<Locations> createState() => _LocationsState();
 }
 
-class _LocationsState extends State<Locations> {
-  LocationE? _e = LocationE.abuja;
+class _LocationsState extends ConsumerState<Locations> {
+  LocationE? _e;
   @override
   Widget build(BuildContext context) {
+    // final s = ref.watch(locationProvider);
     return SizedBox(
       child: Column(
         children: [
@@ -34,6 +50,7 @@ class _LocationsState extends State<Locations> {
                   onChanged: (LocationE? value){
                     setState(() {
                       _e = value!;
+                      ref.read(locationProvider.notifier).change('Abuja');
                     });
                   },
               ),
@@ -42,7 +59,6 @@ class _LocationsState extends State<Locations> {
               const ContainerK(label: 'ABUJA',),
             ],
           ),
-
           const SizedBox(height: 20,),
           Row(
             children: [
@@ -53,6 +69,7 @@ class _LocationsState extends State<Locations> {
                 onChanged: (LocationE? value){
                   setState(() {
                     _e = value!;
+                    ref.read(locationProvider.notifier).change('Lagos');
                   });
                 },
               ),
@@ -72,6 +89,7 @@ class _LocationsState extends State<Locations> {
                 onChanged: (LocationE? value){
                   setState(() {
                     _e = value!;
+                    ref.read(locationProvider.notifier).change('Port Harcourt');
                   });
                 },
               ),
@@ -87,6 +105,9 @@ class _LocationsState extends State<Locations> {
   }
 }
 
+
+
+//// Custom shadowed container for location label
 class ContainerK extends StatelessWidget {
   const ContainerK({Key? key, required this.label}) : super(key: key);
   final String label;
@@ -138,6 +159,8 @@ class ContainerK extends StatelessWidget {
   }
 }
 
+
+////// Location enum
 enum LocationE{
   abuja,
   lagos,

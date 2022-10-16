@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../../../../common/widgets/side_scroll_lists.dart';
-import 'components/presentation/cafe_list_page.dart';
+import '../category_page/presentation/restaurant_list_page.dart';
+
+
+enum EventK {carnival, comedy}
 
 final ScrollController controller = ScrollController();
 class Events extends StatefulWidget {
@@ -30,7 +32,7 @@ class _EventsState extends State<Events> {
               itemBuilder: (context, index){
                 return Stacked(
                   onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Cafes()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Restaurants()));
                   },
                   coverImage: 'assets/images/beaches.png',
                   label: 'Restaurant',);
