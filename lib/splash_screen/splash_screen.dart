@@ -1,28 +1,45 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:padie_mobile/src/onBoarding/onBoarding_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:padie_mobile/src/controllers/profile_controller.dart';
+import 'package:padie_mobile/src/services/auth/shared_prefernces.dart';
+import '../common/constants/strings.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerWidget {
   const SplashScreen({Key? key}) : super(key: key);
+  static String routeName = "/splash";
+
+  Future<void> navigateTo(BuildContext context, WidgetRef ref) async {
+    String? token = await Preferences().getToken();
+    if (token != null) {
+      debugPrint("token is not null");
+      final profileFuture = ref.watch(profileControllerProvider);
+      profileFuture.when(
+          error: (e, st) =>
+              Navigator.of(context).pushReplacementNamed(login),
+          loading: () => debugPrint("loading"),
+          data: (profile) {
+            debugPrint("data");
+            if (profile.phoneNumber!.isNotEmpty) {
+              Navigator.of(context).pushReplacementNamed(navigation);
+            } else {
+              Navigator.of(context).pushReplacementNamed(login);
+            }
+          });
+    } else {
+      Navigator.of(context).pushReplacementNamed(onBoarding);
+    }
+  }
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  pageToReturn(){
-    return const OnBoarding();
-  }
-  @override
-  void initState() {
-    super.initState();
-    Timer(
-        const Duration(seconds: 2),() =>
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoarding())));
-  }
-
-  Widget build(BuildContext context) {
+  // void initState() {
+  //   super.initState();
+  //   Timer(
+  //       const Duration(seconds: 2),() =>
+  //       Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoarding())));
+  // }
+  Widget build(BuildContext context, WidgetRef ref) {
+    navigateTo(context, ref);
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
@@ -46,3 +63,5 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
+

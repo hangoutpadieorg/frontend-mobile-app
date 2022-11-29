@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "198673287653",
+    "project_id": "padie-3656d",
+    "storage_bucket": "padie-3656d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198673287653:android:36d9577bce28818d1c070c",
+        "android_client_info": {
+          "package_name": "com.example.padie_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198673287653-c6m0icv37fbvutqmk0ca6rp8e640k6rd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU_c1r1-OwilSBWTteBzHe3GB7jwYb-tc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198673287653-c6m0icv37fbvutqmk0ca6rp8e640k6rd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

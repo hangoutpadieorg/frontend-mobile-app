@@ -15,12 +15,12 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
             shape: BoxShape.rectangle,
-            color: isOrange ?kOrange : Colors.white,
+            color: isOrange ? kOrange : Colors.white,
             borderRadius: BorderRadius.circular(10)
         ),
         width: isSmall ? getProportionateScreenWidth(170):getProportionateScreenWidth(324),
@@ -63,7 +63,7 @@ class BlackButton extends StatelessWidget {
   final Widget? withLogo;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
@@ -80,6 +80,7 @@ class BlackButton extends StatelessWidget {
             style: TextStyle(
               fontSize: getFontSize(18.5),
               color: Colors.white,
+
             ),
           ),
         ),

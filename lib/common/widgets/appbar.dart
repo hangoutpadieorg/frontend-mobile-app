@@ -6,7 +6,7 @@ import '../constants/colors.dart';
 PreferredSizeWidget appBar(BuildContext context,) {
   return AppBar(
     automaticallyImplyLeading: false,
-    toolbarHeight: 80,
+    toolbarHeight: 70,////80
     backgroundColor: Colors.transparent,
     elevation: 0.0,
     // leading: Text('yes'),
@@ -14,6 +14,7 @@ PreferredSizeWidget appBar(BuildContext context,) {
     flexibleSpace: Center(
       child: Padding(
         padding: const EdgeInsets.only(
+            top: 30,
             left: 20,
           right: 20
         ),

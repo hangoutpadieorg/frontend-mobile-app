@@ -1,23 +1,67 @@
-import 'dart:ui';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'splash_screen/splash_screen.dart';
-import 'src/nav_bar.dart';
+import 'app_main.dart';
+import 'common/constants/firebase_messaging.dart';
+import 'common/constants/utils.dart';
+import 'firebase_options.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 //// 428 926
+
+Future<void> _messageHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  debugPrint("Handling a background message: ${message.messageId}");
+}
+
+// late MessageFromFirebaseHandling messageFromFirebaseHandling;
+final messageFromFirebaseHandlingProvider = Provider<MessageFromFirebaseHandling>((ref) => MessageFromFirebaseHandling.init(ref));
+
+
 int? isViewed;
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseMessaging.onBackgroundMessage(_messageHandler);
+  hasInternetConnection();
+  debugPrint('has connection');
+
   final sharePreferences = await SharedPreferences.getInstance();
   ////////onBoard
   isViewed = sharePreferences.getInt('onBoard');
-  print('saved');
+  debugPrint('saved');
       runApp(const ProviderScope(
        child: MyApp(),
   ));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // overrides: [
 //   sharedPreferencesProvider.overrideWithValue(sharePreferences),
 // ],
@@ -26,34 +70,3 @@ void main() async{
 // });
 
 
-GlobalKey<NavigatorState> _mainNavigatorKey = GlobalKey<NavigatorState>();
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    // SizeConfig().init(context);
-    return ScreenUtilInit(
-        designSize: const Size(428, 926),
-        builder: (context, child)=>MaterialApp(
-          navigatorKey: _mainNavigatorKey,
-          scrollBehavior: const MaterialScrollBehavior(),
-          debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: isViewed != 0 ? const SplashScreen() :  Nav(),
-        )
-    );
-  }
-}
-
-class MyScrollBehaviour extends MaterialScrollBehavior{
-  @override
-  Set<PointerDeviceKind> get dragDevice => {
-    PointerDeviceKind.touch,
-    PointerDeviceKind.mouse,
-  };
-}

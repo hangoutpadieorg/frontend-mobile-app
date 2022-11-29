@@ -4,6 +4,7 @@ import 'package:padie_mobile/common/constants/colors.dart';
 import '../constants/size_config.dart';
 // import 'package:numbers/utils/size_config.dart';
 
+
 class TabBarComponent extends StatelessWidget {
   final List<String> tabs;
   final List<Widget> tabViews;
@@ -45,26 +46,27 @@ class TabBarComponent extends StatelessWidget {
   }
 }
 
+
 /* ---------------------CUSTOM_PAINTER------------------------ */
 class CustomTabIndicator extends Decoration {
   @override
-  _CustomPainter createBoxPainter([VoidCallback? onChanged]) =>
-      _CustomPainter(this, onChanged);
+  CustomPainter createBoxPainter([VoidCallback? onChanged]) =>
+      CustomPainter(this, onChanged);
 }
 
-class _CustomPainter extends BoxPainter {
+class CustomPainter extends BoxPainter {
   final CustomTabIndicator decoration;
 
-  _CustomPainter(this.decoration, VoidCallback? onChanged)
+  CustomPainter(this.decoration, VoidCallback? onChanged)
       :
         super(onChanged);
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    
+
 
     final Rect rect = Rect.fromLTWH(
-        configuration.size!.width / 4.4 + offset.dx - 30,
+        configuration.size!.width / 5.4 + offset.dx - 30,///4.4
         offset.dy + 40,
         150,
         3);
